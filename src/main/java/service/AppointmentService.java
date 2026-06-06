@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 public class AppointmentService {
     private final AppointmentDao appointmentDao = new AppointmentDao();
 
+    // Yêu cầu 4.2.1: Sắp xếp giảm dần theo Ngày và Giờ
     public List<AppointmentDto> getAllAppointmentsSortedDesc() {
         return appointmentDao.getAllAppointments().stream()
                 .sorted(Comparator.comparing(Appointment::getAppointmentDate)
@@ -20,10 +21,12 @@ public class AppointmentService {
                 .collect(Collectors.toList());
     }
 
+    // Yêu cầu 4.2.2: Lọc các cuộc hẹn thuộc Quý tiếp theo và sắp xếp tăng dần
     public List<AppointmentDto> getUpcomingQuarterAppointments(LocalDate currentDate) {
         int currentYear = currentDate.getYear();
         int currentMonth = currentDate.getMonthValue();
 
+        // Tính toán Quý hiện tại (1 đến 4)
         int currentQuarter = (currentMonth - 1) / 3 + 1;
 
         int targetQuarter;

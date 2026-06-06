@@ -42,7 +42,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>edu.miu.cs.cs401.MainApp</mainClass>
+                                    <mainClass>MainApp</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
